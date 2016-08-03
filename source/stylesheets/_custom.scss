@@ -97,7 +97,16 @@ html, body{
   color: #fff;
 }
 
-#contest, #age-gate, #word-gate{
+#age-gate{
+  label.error{
+    display: none !important;
+  }
+  .error{
+    color: black !important;
+  }
+}
+
+#contest, #youngform, #age-gate, #word-gate{
   label, .terms{
     font-family:'FuturaStd-CondensedBold';
     text-transform: uppercase;

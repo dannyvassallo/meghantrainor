@@ -3,6 +3,22 @@ z = 'e',
 u = 'm',
 r = 't';
 
+function calculate_age(birth_month, birth_day, birth_year) {
+    today_date = new Date();
+    today_year = today_date.getFullYear();
+    today_month = today_date.getMonth();
+    today_day = today_date.getDate();
+    age = today_year - birth_year;
+
+    if (today_month < (birth_month - 1)) {
+        age--;
+    }
+    if (((birth_month - 1) == today_month) && (today_day < birth_day)) {
+        age--;
+    }
+    return age;
+}
+
 // word gate
 $(function(){
 
@@ -15,7 +31,7 @@ $(function(){
       codeWord = codeWord.toString().toLowerCase().trim();
       if(codeWord == (u+z+" "+r+x+x) || codeWord == (u+z+r+x+x)){
         $.growl.notice({ message: "Success! Please enter your birthday." });
-        $('#word-gate').hide();
+        $('#word-gate').parent().remove();
         $('#age-gate').removeClass('hidden');
       } else {
         $.growl.error({ message: "Sorry, that code word is incorrect!" });
@@ -173,14 +189,12 @@ $("#age-gate").validate({
   focusInvalid: false,
   rules: {
     birthday: {
-      required: true,
-      minAge: 13
+      required: true
     }
   },
   messages: {
     birthday: {
-      required: "You must enter your date of birth",
-      minAge: "You must be at least 13 years old."
+      required: "You must enter your date of birth"
     }
   },
   invalidHandler: function(form, validator) {
@@ -189,6 +203,13 @@ $("#age-gate").validate({
   success: "valid",
   submitHandler: function() {
     $('#gate').fadeOut( 500 );
+    var birthdate = $('input[name="birthday"]').val().split('-'),
+    age = calculate_age(birthdate[0], birthdate[1], birthdate[2]);
+    if(age >= 13){
+      $('#youngform').remove();
+    } else {
+      $('#contest').remove();
+    }
     setTimeout(function(){
       $('.content').fadeIn();
       $('#footer').fadeIn();
