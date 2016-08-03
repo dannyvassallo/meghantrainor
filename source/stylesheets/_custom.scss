@@ -1,5 +1,5 @@
 $orange: #f26649;
-$pink: #f424ab;
+$pink: #a4e6fc;
 
 #hidden_iframe{
   display: none;
@@ -97,7 +97,16 @@ html, body{
   color: #fff;
 }
 
-#contest, #age-gate, #word-gate{
+#age-gate{
+  label.error{
+    display: none !important;
+  }
+  .error{
+    color: black !important;
+  }
+}
+
+#contest, #youngform, #age-gate, #word-gate{
   label, .terms{
     font-family:'FuturaStd-CondensedBold';
     text-transform: uppercase;
@@ -118,7 +127,7 @@ html, body{
     padding: 2% 0;
   }
   .disney-submit{
-    background: url("https://s3.amazonaws.com/myfangate.com/rddanshay/enter-button.png") no-repeat scroll 0 0 transparent;
+    background: url("https://s3.amazonaws.com/myfangate.com/meghantrainor/enter-button.png") no-repeat scroll 0 0 transparent;
     background-size: cover;
     width: 190px;
     height: 87px;
@@ -278,4 +287,8 @@ html, body{
 
 .pink-text{
   color: $pink !important;
+}
+
+.age-input{
+  display: none !important;
 }
