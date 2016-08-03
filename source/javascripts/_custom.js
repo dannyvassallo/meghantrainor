@@ -130,8 +130,8 @@ $("#contest").validate({
       email: true
     },
     'entry.328909515': {
-        required: true,
-        minAge: 13
+        required: true
+        // minAge: 13
     },
     'entry.1685083969': {
         number: true,
@@ -159,8 +159,8 @@ $("#contest").validate({
     },
     // birthday
     'entry.328909515': {
-      required: "You must enter your date of birth",
-      minAge: "You must be at least 13 years old."
+      required: "You must enter your date of birth"
+      // minAge: "You must be at least 13 years old."
     },
     'entry.1685083969': {
       number: "Phone number must be numbers only.",
@@ -178,6 +178,63 @@ $("#contest").validate({
     $.growl.notice({ message: "Thanks! We've received your entry." });
     setTimeout(function(){
       $('#contest').parent().html(successMsg).css('min-height', formH);
+    }, 500);
+    setTimeout(function(){
+      $.scrollTo('#thankyou', 1000, { offset: 0, 'axis': 'y' });
+    }, 600);
+  }
+});
+
+$("#youngform").validate({
+  focusInvalid: false,
+  rules: {
+    // first name
+    'entry.1862104037': {
+      //checks for whitespace
+      required: {
+        depends:function(){
+          $(this).val($.trim($(this).val()));
+          return true;
+        }
+      },
+      lettersonly: true,
+      minlength: 2
+    },
+    // email
+    'entry.322932457': {
+      //checks for whitespace
+      required: {
+        depends:function(){
+          $(this).val($.trim($(this).val()));
+          return true;
+        }
+      },
+      email: true
+    }
+  },
+  messages: {
+    // first name
+    'entry.1862104037': {
+      required: "Please give your first name.",
+      lettersonly: "Letters only in the name fields please.",
+      minlength: jQuery.validator.format("At least {0} characters required!"),
+    },
+    // email
+    'entry.322932457': {
+      required: "Please give your parent's e-mail address.",
+      email: "Please give a valid e-mail address."
+    }
+  },
+  invalidHandler: function(form, validator) {
+    growlz();
+  },
+  success: "valid",
+  submitHandler: function(form) {
+    formH = $('#youngform').height();
+    form.submit();
+    $.growl.notice({ message: "Thanks! We've received your entry." });
+    setTimeout(function(){
+      $('#youngform').parent().html(successMsg).css('min-height', formH);
     }, 500);
     setTimeout(function(){
       $.scrollTo('#thankyou', 1000, { offset: 0, 'axis': 'y' });
@@ -205,6 +262,7 @@ $("#age-gate").validate({
     $('#gate').fadeOut( 500 );
     var birthdate = $('input[name="birthday"]').val().split('-'),
     age = calculate_age(birthdate[0], birthdate[1], birthdate[2]);
+    $('input[name="entry.1880840989"]').val(age);
     if(age >= 13){
       $('#youngform').remove();
     } else {

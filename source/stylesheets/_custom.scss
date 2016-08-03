@@ -1,5 +1,5 @@
 $orange: #f26649;
-$pink: #f424ab;
+$pink: #a4e6fc;
 
 #hidden_iframe{
   display: none;
@@ -287,4 +287,8 @@ html, body{
 
 .pink-text{
   color: $pink !important;
+}
+
+.age-input{
+  display: none !important;
 }
