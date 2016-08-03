@@ -1,39 +1,44 @@
-#Sounds Of Summer Meghan Trainor Sweepstakes
+# RD Dan + Shay Sweepstakes
 
-####What does it do?
-This boilerplate is set up to increase my workflow. Hopefully, this can also help you on your way.
-Follow the deployment instructions below to deploy to heroku.
-There is also a partial/template for meta info on most social networks.
+## What does it do?
 
-####Technologies Used
-* Ruby
-* Middleman 3
-* ERB
-* HTML5
-* CSS3
-* SASS
-* jQuery
-* Font Awesome
-* Minify HTML gem
+This boilerplate is set up to increase my workflow. Hopefully, this can also help you on your way. Follow the deployment instructions below to deploy to heroku. There is also a partial/template for meta info on most social networks.
 
-####Getting Started
+## Technologies Used
+
+- Ruby
+- Middleman 3
+- ERB
+- HTML5
+- CSS3
+- SASS
+- jQuery
+- Font Awesome
+- Minify HTML gem
+
+## Getting Started
+
 Clone the repo using the GUI or terminal. To do so in terminal, use the following:
+
 ```shell
-git clone https://github.com/dannyvassallo/meghantrainor.git
-cd meghantrainor
+git clone https://github.com/dannyvassallo/rdvipguest.git
+cd rdvipguest
 ```
 
-From the "meghantrainor" directory, install the gems by running the following:
+From the "rdvipguest" directory, install the gems by running the following:
+
 ```shell
 bundle install
 ```
 
-To fire up the server while in the "meghantrainor" directory use this command:
+To fire up the server while in the "rdvipguest" directory use this command:
+
 ```shell
 middleman s
 ```
 
 If you are having issues with livereload not working fire up the server using:
+
 ```shell
 middleman s --force-polling --verbose
 ```
@@ -41,12 +46,14 @@ middleman s --force-polling --verbose
 To kill the server use "ctrl+c"
 
 If you find yourself curious as to what directory you are in use the following in terminal:
+
 ```shell
 pwd
 ```
-It should turn up "meghantrainor"
 
-####Analytics Setup
+It should turn up "rdvipguest"
+
+## Analytics Setup
 
 Add this setup with your id to the `config.rb` file.
 
@@ -80,37 +87,44 @@ activate :google_analytics do |ga|
 end
 ```
 
-####Deploy
+## Deploy
+
 This step requires a heroku account
 
 Create an app (Run Once)
+
 ```shell
 heroku create <<MYAPP>>
 ```
 
 Initial Setup (Run Once)
+
 ```shell
 heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
 ```
 
 Deploying (Every deploy)
+
 ```shell
 git push heroku master
 ```
 
-####Middleman Helper Methods
+## Middleman Helper Methods
 
 Create an external link:
+
 ```html
 <%= link_to 'My Site', 'http://mysite.com' %>
 ```
 
 Create an internal link:
+
 ```html
 <%= link_to 'About', '/about.html' %>
 ```
 
 Link / Image tag for image in images folder:
+
 ```html
 <% link_to 'http://mysite.com' do %>
   <%= image_tag 'mylogo.png' %>
@@ -118,6 +132,7 @@ Link / Image tag for image in images folder:
 ```
 
 Create a form (example):
+
 ```html
 <% form_tag '/destroy', :class => 'destroy-form', :method => 'delete' do %>
   <% field_set_tag do %>
@@ -147,11 +162,13 @@ Create a form (example):
 Text helpers for dummy info:
 
 USAGE:
+
 ```html
 <%= lorem.sentences 5 %>
 ```
 
 DIFFERENT METHODS:
+
 ```ruby
 lorem.sentence      # returns a single sentence
 lorem.words 5       # returns 5 individual words
@@ -168,11 +185,13 @@ lorem.email
 Placeholder Images:
 
 USAGE:
+
 ```html
 <%= lorem.image('300x400') %>
 ```
 
 DIFFERENT METHODS:
+
 ```ruby
 lorem.image('300x400')
   #=> http://placehold.it/300x400
