@@ -1,3 +1,43 @@
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie(){
+  var clearedGate = getCookie('clearedGate');
+  if(clearedGate === "false"){
+    $('#age-gate').remove();
+    $('#word-gate').parent().remove();
+    setTimeout(function(){
+      $('.col-xs-12.col-sm-8.col-sm-offset-2.pad-top').html('<h2 style="color: white;">You are not eligible.</h2>')
+      $('.col-xs-12.col-sm-8.col-sm-offset-2.pad-top').addClass('text-center');
+    }, 100);
+  }
+}
+
+$(function(){
+  checkCookie();
+});
+
+
+
 var x ='o',
 z = 'e',
 u = 'm',
@@ -246,16 +286,24 @@ $("#age-gate").validate({
   focusInvalid: false,
   rules: {
     birthday: {
-      required: true
+      required: true,
+      minAge: 6
     }
   },
   messages: {
     birthday: {
-      required: "You must enter your date of birth"
+      required: "You must enter your date of birth",
+      minAge: "Sorry, you are not eligible."
     }
   },
   invalidHandler: function(form, validator) {
     growlz();
+    setTimeout(function(){
+    if($('.growl-message:contains("you are not eligible")').length > 0){
+       setCookie('clearedGate', false, 7);
+       checkCookie();
+     }
+    }, 100);
   },
   success: "valid",
   submitHandler: function() {
