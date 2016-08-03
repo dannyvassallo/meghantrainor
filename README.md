@@ -1,4 +1,4 @@
-# RD Dan + Shay Sweepstakes
+# Sounds Of Summer Meghan Trainor Sweepstakes
 
 ## What does it do?
 
@@ -21,17 +21,17 @@ This boilerplate is set up to increase my workflow. Hopefully, this can also hel
 Clone the repo using the GUI or terminal. To do so in terminal, use the following:
 
 ```shell
-git clone https://github.com/dannyvassallo/rdvipguest.git
-cd rdvipguest
+git clone https://github.com/dannyvassallo/meghantrainor.git
+cd meghantrainor
 ```
 
-From the "rdvipguest" directory, install the gems by running the following:
+From the "meghantrainor" directory, install the gems by running the following:
 
 ```shell
 bundle install
 ```
 
-To fire up the server while in the "rdvipguest" directory use this command:
+To fire up the server while in the "meghantrainor" directory use this command:
 
 ```shell
 middleman s
@@ -51,7 +51,7 @@ If you find yourself curious as to what directory you are in use the following i
 pwd
 ```
 
-It should turn up "rdvipguest"
+It should turn up "meghantrainor"
 
 ## Analytics Setup
 
