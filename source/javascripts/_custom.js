@@ -1,10 +1,10 @@
+var x ='o',
+z = 'e',
+u = 'm',
+r = 't';
+
 // word gate
 $(function(){
-
-  var x ='y',
-  z = 'l',
-  u = 'p',
-  r = 'a';
 
   $('#word-gate button').on('click', function(e){
     e.preventDefault();
@@ -13,12 +13,12 @@ $(function(){
       $.growl.error({ message: "Please enter the code word." });
     } else {
       codeWord = codeWord.toString().toLowerCase().trim();
-      if(codeWord != (u+z+r+x)){
-        $.growl.error({ message: "Sorry, that code word is incorrect!" });
-      } else {
+      if(codeWord == (u+z+" "+r+x+x) || codeWord == (u+z+r+x+x)){
         $.growl.notice({ message: "Success! Please enter your birthday." });
         $('#word-gate').hide();
-        $('#age-gate').parent().removeClass('hidden');
+        $('#age-gate').removeClass('hidden');
+      } else {
+        $.growl.error({ message: "Sorry, that code word is incorrect!" });
       }
     }
   });
