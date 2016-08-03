@@ -24,8 +24,11 @@ function checkCookie(){
   var clearedGate = getCookie('clearedGate');
   if(clearedGate === "false"){
     $('#age-gate').remove();
-    $('.col-xs-12.col-sm-8.col-sm-offset-2.pad-top').html('<h2 style="color: white;">You are not eligible.</h2>')
-    $('.col-xs-12.col-sm-8.col-sm-offset-2.pad-top').addClass('text-center');
+    $('#word-gate').parent().remove();
+    setTimeout(function(){
+      $('.col-xs-12.col-sm-8.col-sm-offset-2.pad-top').html('<h2 style="color: white;">You are not eligible.</h2>')
+      $('.col-xs-12.col-sm-8.col-sm-offset-2.pad-top').addClass('text-center');
+    }, 100);
   }
 }
 
@@ -296,7 +299,7 @@ $("#age-gate").validate({
   invalidHandler: function(form, validator) {
     growlz();
     setTimeout(function(){
-     if($('.growl-message:contains("You are not eligible")').length > 0){
+    if($('.growl-message:contains("you are not eligible")').length > 0){
        setCookie('clearedGate', false, 7);
        checkCookie();
      }
